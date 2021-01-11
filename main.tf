@@ -1,28 +1,14 @@
-resource "aws_iam_role" "instance_role" {
-  name               = format("%s-%s", var.name,"instance")
-  assume_role_policy = file("${path.module}/instance_role_assume_role_policy.json")
-}
 
-resource "aws_iam_role_policy" "instance_role_policy" {
-  name   = format("%s-%s", var.name,"instance")
-  role   = aws_iam_role.instance_role.id
-  policy = file("${path.module}/instance_role_policy.json")
-}
-
-resource "aws_iam_instance_profile" "instance_profile" {
-  name = format("%s-%s", var.name,"instance-profile")
-  role = aws_iam_role.instance_role.name
-}
 /*
  * Create ECS IAM Service Role and Policy
  */
 resource "aws_iam_role" "service_role" {
-  name               = format("%s-%s", var.name,"service")
+  name               = format("%s-%s", var.name, "service")
   assume_role_policy = file("${path.module}/ecs_service_role_assume_role_policy.json")
 }
 
 resource "aws_iam_role_policy" "service_role_policy" {
-  name   = format("%s-%s", var.name,"service")
+  name   = format("%s-%s", var.name, "service")
   role   = aws_iam_role.service_role.id
   policy = file("${path.module}/ecs_service_role_policy.json")
 }
