@@ -1,3 +1,3 @@
-output "ecs_instance_profile_id" {
-  value = aws_iam_instance_profile.instance_profile.id
+output "ecs_service_role_id" {
+  value = aws_iam_role.service_role.id
 }

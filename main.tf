@@ -15,6 +15,10 @@ resource "aws_iam_role_policy" "service_role_policy" {
 
 resource "aws_ecs_cluster" "ecs_cluster" {
   name = var.name
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
 }
 
 resource "aws_ecs_task_definition" "task_def" {
