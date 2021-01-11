@@ -3,6 +3,7 @@ variable "name" {
 }
 
 variable "alb_target_group_arn" {}
+variable "container_definitions" {}
 
 
 

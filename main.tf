@@ -23,7 +23,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 
 resource "aws_ecs_task_definition" "task_def" {
   family                = var.name
-  container_definitions = file("${path.module}/service.json")
+  container_definitions = var.container_definitions
 }
 
 resource "aws_ecs_service" "app" {
