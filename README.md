@@ -16,6 +16,7 @@ No requirements.
 | container\_definitions | n/a | `any` | n/a | yes |
 | container\_name | n/a | `any` | n/a | yes |
 | container\_port | n/a | `any` | n/a | yes |
+| desired\_task\_count | n/a | `any` | n/a | yes |
 | name | n/a | `string` | n/a | yes |
 
 ## Outputs

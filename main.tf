@@ -23,6 +23,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 
 resource "aws_ecs_task_definition" "task_def" {
   family                = var.name
+  network_mode          = "bridge"
   container_definitions = var.container_definitions
 }
 
@@ -30,7 +31,7 @@ resource "aws_ecs_service" "app" {
   name            = var.name
   cluster         = aws_ecs_cluster.ecs_cluster.id
   task_definition = aws_ecs_task_definition.task_def.arn
-  desired_count   = 1
+  desired_count   = var.desired_task_count
   iam_role        = aws_iam_role.service_role.arn
   depends_on      = [aws_iam_role_policy.service_role_policy]
 
@@ -39,5 +40,4 @@ resource "aws_ecs_service" "app" {
     container_name   = var.container_name
     container_port   = var.container_port
   }
-
 }
